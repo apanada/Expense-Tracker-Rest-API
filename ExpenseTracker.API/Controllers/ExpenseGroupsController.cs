@@ -26,6 +26,7 @@ namespace ExpenseTracker.API.Controllers
             _repository = repository;
         }
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             try
@@ -42,6 +43,7 @@ namespace ExpenseTracker.API.Controllers
             }
         }
 
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             try
@@ -90,6 +92,7 @@ namespace ExpenseTracker.API.Controllers
             }
         }
 
+        [HttpPut]
         public IHttpActionResult Put(int id, [FromBody]DTO.ExpenseGroup expenseGroup)
         {
             try
@@ -160,6 +163,7 @@ namespace ExpenseTracker.API.Controllers
             }
         }
 
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             try
