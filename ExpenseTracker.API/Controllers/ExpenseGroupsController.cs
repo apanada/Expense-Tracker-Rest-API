@@ -7,6 +7,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Marvin.JsonPatch;
+using ExpenseTracker.API.Helpers;
+using System.Web;
+using System.Web.Http.Routing;
 
 namespace ExpenseTracker.API.Controllers
 {
@@ -14,6 +17,8 @@ namespace ExpenseTracker.API.Controllers
     {
         IExpenseTrackerRepository _repository;
         ExpenseGroupFactory _expenseGroupFactory = new ExpenseGroupFactory();
+
+        const int maxPageSize = 10;
 
         public ExpenseGroupsController()
         {
@@ -27,15 +32,86 @@ namespace ExpenseTracker.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get()
+        [Route("api/expensegroups", Name = "ExpenseGroupsList")]
+        public IHttpActionResult Get(string sort = "id", string status = null, string userId = null,
+             int page = 1, int pageSize = maxPageSize)
         {
             try
             {
-                var expenseGroups = _repository.GetExpenseGroups();
+                int statusId = -1;
+                if (status != null)
+                {
+                    switch (status.ToLower())
+                    {
+                        case "open":
+                            statusId = 1;
+                            break;
+                        case "confirmed":
+                            statusId = 2;
+                            break;
+                        case "processed":
+                            statusId = 3;
+                            break;
+                        default:
+                            break;
+                    }
+                }
 
-                return Ok(expenseGroups.ToList()
+                // get expensegroups from repository
+                var expenseGroups = _repository.GetExpenseGroups()
+                    .ApplySort(sort)
+                    .Where(eg => (statusId == -1 || eg.ExpenseGroupStatusId == statusId))
+                    .Where(eg => (userId == null || eg.UserId == userId));
+
+                // ensure the page size isn't larger than the maximum.
+                if (pageSize > maxPageSize)
+                {
+                    pageSize = maxPageSize;
+                }
+
+                // calculate data for metadata
+                var totalCount = expenseGroups.Count();
+                var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
+
+                var urlHelper = new UrlHelper(Request);
+                var prevLink = page > 1 ? urlHelper.Link("ExpenseGroupsList",
+                    new
+                    {
+                        page = page - 1,
+                        pageSize = pageSize,
+                        sort = sort,
+                        status = status,
+                        userId = userId
+                    }) : "";
+                var nextLink = page < totalPages ? urlHelper.Link("ExpenseGroupsList",
+                    new
+                    {
+                        page = page + 1,
+                        pageSize = pageSize,
+                        sort = sort,
+                        status = status,
+                        userId = userId
+                    }) : "";
+
+                var paginationHeader = new
+                {
+                    currentPage = page,
+                    pageSize = pageSize,
+                    totalCount = totalCount,
+                    totalPages = totalPages,
+                    previousPageLink = prevLink,
+                    nextPageLink = nextLink
+                };
+
+                HttpContext.Current.Response.Headers.Add("X-Pagination",
+                   Newtonsoft.Json.JsonConvert.SerializeObject(paginationHeader));
+
+                // return result
+                return Ok(expenseGroups
+                    .Skip(pageSize * (page - 1))
+                    .Take(pageSize)
+                    .ToList()
                     .Select(eg => _expenseGroupFactory.CreateExpenseGroup(eg)));
-
             }
             catch (Exception)
             {

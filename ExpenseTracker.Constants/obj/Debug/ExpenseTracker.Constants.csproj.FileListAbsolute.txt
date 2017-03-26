@@ -4,6 +4,5 @@ C:\Users\nmote\Desktop\building-securing-restful-api-aspdotnet\3-exercise-files\
 C:\Users\nmote\Desktop\building-securing-restful-api-aspdotnet\3-exercise-files\1_base\end\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.pdb
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\bin\Debug\ExpenseTracker.Constants.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\bin\Debug\ExpenseTracker.Constants.pdb
-C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.csprojResolveAssemblyReference.cache
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.pdb

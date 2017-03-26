@@ -62,3 +62,4 @@ C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\bin\System
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\obj\Debug\ExpenseTracker.API.csprojResolveAssemblyReference.cache
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\obj\Debug\ExpenseTracker.API.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\obj\Debug\ExpenseTracker.API.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\bin\System.Linq.Dynamic.dll
