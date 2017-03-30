@@ -6,3 +6,4 @@ C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\bin\
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\bin\Debug\ExpenseTracker.Constants.pdb
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Debug\ExpenseTracker.Constants.csprojResolveAssemblyReference.cache

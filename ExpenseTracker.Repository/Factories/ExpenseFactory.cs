@@ -30,8 +30,6 @@ namespace ExpenseTracker.Repository.Factories
             };
         }
 
-
-
         public Expense CreateExpense(DTO.Expense expense)
         {
             return new Expense()
@@ -43,6 +41,37 @@ namespace ExpenseTracker.Repository.Factories
                 Id = expense.Id
             };
         }
-         
+
+        public object CreateDataShapedObject(Expense expense, List<string> lstOfFields)
+        {
+            return CreateDataShapedObject(CreateExpense(expense), lstOfFields);
+        }
+
+        public object CreateDataShapedObject(DTO.Expense expense, List<string> lstOfFields)
+        {
+            if (!lstOfFields.Any())
+            {
+                return expense;
+            }
+            else
+            {
+                // create a new ExpandoObject & dynamically create the properties for this object
+                ExpandoObject objectToReturn = new ExpandoObject();
+
+                foreach (var field in lstOfFields)
+                {
+                    // need to include public and instance, b/c specifying a binding flag overwrites the
+                    // already-existing binding flags.
+                    var fieldValue = expense.GetType()
+                        .GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)
+                        .GetValue(expense, null);
+
+                    // add the field to the ExpandoObject
+                    ((IDictionary<String, Object>)objectToReturn).Add(field, fieldValue);
+                }
+
+                return objectToReturn;
+            }
+        }
     }
 }

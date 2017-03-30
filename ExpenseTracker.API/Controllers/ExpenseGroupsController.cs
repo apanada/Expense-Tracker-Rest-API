@@ -1,18 +1,19 @@
-﻿using ExpenseTracker.Repository;
-using ExpenseTracker.Repository.Factories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using Marvin.JsonPatch;
-using ExpenseTracker.API.Helpers;
 using System.Web;
+using System.Web.Http;
 using System.Web.Http.Routing;
+using ExpenseTracker.API.Helpers;
+using ExpenseTracker.Repository;
+using ExpenseTracker.Repository.Factories;
+using Marvin.JsonPatch;
 
 namespace ExpenseTracker.API.Controllers
 {
+    [RoutePrefix("api")]
     public class ExpenseGroupsController : ApiController
     {
         IExpenseTrackerRepository _repository;
@@ -32,12 +33,22 @@ namespace ExpenseTracker.API.Controllers
         }
 
         [HttpGet]
-        [Route("api/expensegroups", Name = "ExpenseGroupsList")]
+        [Route("expensegroups", Name = "ExpenseGroupsList")]
         public IHttpActionResult Get(string sort = "id", string status = null, string userId = null,
-             int page = 1, int pageSize = maxPageSize)
+             int page = 1, int pageSize = maxPageSize, string fields = null)
         {
             try
             {
+                bool includeExpenses = false;
+                List<string> lstOfFields = new List<string>();
+
+                // we should include expenses when the fields-string contains "expenses", or "expenses.id", …
+                if (fields != null)
+                {
+                    lstOfFields = fields.ToLower().Split(',').ToList();
+                    includeExpenses = lstOfFields.Any(f => f.Contains("expenses"));
+                }
+
                 int statusId = -1;
                 if (status != null)
                 {
@@ -57,8 +68,18 @@ namespace ExpenseTracker.API.Controllers
                     }
                 }
 
+                IQueryable<Repository.Entities.ExpenseGroup> expenseGroups = null;
+                if (includeExpenses)
+                {
+                    expenseGroups = _repository.GetExpenseGroupsWithExpenses();
+                }
+                else
+                {
+                    expenseGroups = _repository.GetExpenseGroups();
+                }
+
                 // get expensegroups from repository
-                var expenseGroups = _repository.GetExpenseGroups()
+                expenseGroups = _repository.GetExpenseGroups()
                     .ApplySort(sort)
                     .Where(eg => (statusId == -1 || eg.ExpenseGroupStatusId == statusId))
                     .Where(eg => (userId == null || eg.UserId == userId));
@@ -80,6 +101,7 @@ namespace ExpenseTracker.API.Controllers
                         page = page - 1,
                         pageSize = pageSize,
                         sort = sort,
+                        fields = fields,
                         status = status,
                         userId = userId
                     }) : "";
@@ -89,6 +111,7 @@ namespace ExpenseTracker.API.Controllers
                         page = page + 1,
                         pageSize = pageSize,
                         sort = sort,
+                        fields = fields,
                         status = status,
                         userId = userId
                     }) : "";
@@ -111,7 +134,7 @@ namespace ExpenseTracker.API.Controllers
                     .Skip(pageSize * (page - 1))
                     .Take(pageSize)
                     .ToList()
-                    .Select(eg => _expenseGroupFactory.CreateExpenseGroup(eg)));
+                    .Select(eg => _expenseGroupFactory.CreateDataShapedObject(eg, lstOfFields)));
             }
             catch (Exception)
             {
@@ -262,6 +285,5 @@ namespace ExpenseTracker.API.Controllers
                 return InternalServerError();
             }
         }
-
     }
 }
