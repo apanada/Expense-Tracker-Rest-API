@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Routing;
@@ -10,9 +9,11 @@ using ExpenseTracker.API.Helpers;
 using ExpenseTracker.Repository;
 using ExpenseTracker.Repository.Factories;
 using Marvin.JsonPatch;
+using System.Web.Http.Cors;
 
 namespace ExpenseTracker.API.Controllers
 {
+    [EnableCors("*", "*", "*")]
     [RoutePrefix("api")]
     public class ExpenseGroupsController : ApiController
     {
