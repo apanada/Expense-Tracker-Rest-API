@@ -1,0 +1,5 @@
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\bin\Release\ExpenseTracker.Constants.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\bin\Release\ExpenseTracker.Constants.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Release\ExpenseTracker.Constants.csprojResolveAssemblyReference.cache
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Release\ExpenseTracker.Constants.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Constants\obj\Release\ExpenseTracker.Constants.pdb

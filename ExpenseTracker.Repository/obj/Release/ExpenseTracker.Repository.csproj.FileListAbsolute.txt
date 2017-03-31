@@ -1,0 +1,14 @@
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\ExpenseTracker.Repository.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\ExpenseTracker.Repository.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\EntityFramework.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\ExpenseTracker.DTO.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\Marvin.JsonPatch.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\Newtonsoft.Json.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\ExpenseTracker.DTO.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\EntityFramework.xml
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\bin\Release\Newtonsoft.Json.xml
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\obj\Release\ExpenseTracker.Repository.csprojResolveAssemblyReference.cache
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\obj\Release\ExpenseTracker.Repository.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.Repository\obj\Release\ExpenseTracker.Repository.pdb

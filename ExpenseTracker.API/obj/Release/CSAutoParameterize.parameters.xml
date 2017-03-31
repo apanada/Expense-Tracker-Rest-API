@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ExpenseTrackerContext-Web.config Connection String" description="ExpenseTrackerContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:fgw3id7mkm.database.windows.net,1433;Database=ExpenseTrackerDatabase;User ID=apanada@fgw3id7mkm;Password=Job@cg2016;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\apanada\\OneDrive\\Expense-Tracker-Rest-API\\ExpenseTracker\.API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ExpenseTrackerContext']/@connectionString" />
+  </parameter>
+</parameters>

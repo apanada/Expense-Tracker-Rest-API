@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="pluralsightexpensetrackerapi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\apanada\\OneDrive\\Expense-Tracker-Rest-API\\ExpenseTracker\.API\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\apanada\\OneDrive\\Expense-Tracker-Rest-API\\ExpenseTracker\.API\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="pluralsightexpensetrackerapi/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\apanada\\OneDrive\\Expense-Tracker-Rest-API\\ExpenseTracker\.API\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="ExpenseTrackerContext-Web.config Connection String" description="" value="Data Source=tcp:bud2415466.database.windows.net,1433;Initial Catalog=pluralsightexpensetrackerapi_db;User Id=Pluralsight@bud2415466;Password=Plur@ls1ght" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\apanada\\OneDrive\\Expense-Tracker-Rest-API\\ExpenseTracker\.API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ExpenseTrackerContext']/@connectionString" />
+  </parameter>
+</parameters>
