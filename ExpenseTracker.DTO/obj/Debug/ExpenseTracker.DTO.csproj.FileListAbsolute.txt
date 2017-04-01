@@ -6,4 +6,3 @@ C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.DTO\bin\Debug\
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.DTO\bin\Debug\ExpenseTracker.DTO.pdb
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.DTO\obj\Debug\ExpenseTracker.DTO.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.DTO\obj\Debug\ExpenseTracker.DTO.pdb
-C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.DTO\obj\Debug\ExpenseTracker.DTO.csprojResolveAssemblyReference.cache

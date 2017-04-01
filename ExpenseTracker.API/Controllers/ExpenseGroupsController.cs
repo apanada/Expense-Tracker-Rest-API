@@ -20,7 +20,7 @@ namespace ExpenseTracker.API.Controllers
         IExpenseTrackerRepository _repository;
         ExpenseGroupFactory _expenseGroupFactory = new ExpenseGroupFactory();
 
-        const int maxPageSize = 10;
+        const int maxPageSize = 20;
 
         public ExpenseGroupsController()
         {
@@ -165,6 +165,7 @@ namespace ExpenseTracker.API.Controllers
             }
         }
 
+        [Route("expensegroups")]
         [HttpPost]
         public IHttpActionResult Post([FromBody] DTO.ExpenseGroup expenseGroup)
         {
@@ -181,7 +182,7 @@ namespace ExpenseTracker.API.Controllers
                 if (result.Status == RepositoryActionStatus.Created)
                 {
                     var newExpenseGroup = _expenseGroupFactory.CreateExpenseGroup(result.Entity);
-                    return Created(Request.RequestUri + "/" + expenseGroup.Id.ToString(), newExpenseGroup);
+                    return Created(Request.RequestUri + "/" + newExpenseGroup.Id.ToString(), newExpenseGroup);
                 }
 
                 return BadRequest();
