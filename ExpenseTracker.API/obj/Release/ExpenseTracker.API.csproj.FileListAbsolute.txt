@@ -31,3 +31,6 @@ C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\bin\System
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\obj\Release\ExpenseTracker.API.csprojResolveAssemblyReference.cache
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\obj\Release\ExpenseTracker.API.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\obj\Release\ExpenseTracker.API.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\bin\System.Web.Cors.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\bin\System.Web.Http.Cors.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.API\bin\System.Web.Http.Cors.xml

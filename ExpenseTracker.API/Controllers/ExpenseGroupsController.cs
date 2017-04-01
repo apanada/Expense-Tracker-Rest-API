@@ -20,7 +20,7 @@ namespace ExpenseTracker.API.Controllers
         IExpenseTrackerRepository _repository;
         ExpenseGroupFactory _expenseGroupFactory = new ExpenseGroupFactory();
 
-        const int maxPageSize = 20;
+        const int maxPageSize = 5;
 
         public ExpenseGroupsController()
         {
@@ -144,19 +144,38 @@ namespace ExpenseTracker.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        [Route("expensegroups/{id}")]
+        public IHttpActionResult Get(int id, string fields = null)
         {
             try
             {
-                var expenseGroup = _repository.GetExpenseGroup(id);
+                bool includeExpenses = false;
+                List<string> lstOfFields = new List<string>();
 
-                if (expenseGroup == null)
+                // we should include expenses when the fields-string contains "expenses"
+                if (fields != null)
                 {
-                    return NotFound();
+                    lstOfFields = fields.ToLower().Split(',').ToList();
+                    includeExpenses = lstOfFields.Any(f => f.Contains("expenses"));
+                }
+
+                Repository.Entities.ExpenseGroup expenseGroup;
+                if (includeExpenses)
+                {
+                    expenseGroup = _repository.GetExpenseGroupWithExpenses(id);
                 }
                 else
                 {
-                    return Ok(_expenseGroupFactory.CreateExpenseGroup(expenseGroup));
+                    expenseGroup = _repository.GetExpenseGroup(id);
+                }
+
+                if (expenseGroup != null)
+                {
+                    return Ok(_expenseGroupFactory.CreateDataShapedObject(expenseGroup, lstOfFields));
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
             catch (Exception)
@@ -165,8 +184,8 @@ namespace ExpenseTracker.API.Controllers
             }
         }
 
-        [Route("expensegroups")]
         [HttpPost]
+        [Route("expensegroups")]
         public IHttpActionResult Post([FromBody] DTO.ExpenseGroup expenseGroup)
         {
             try

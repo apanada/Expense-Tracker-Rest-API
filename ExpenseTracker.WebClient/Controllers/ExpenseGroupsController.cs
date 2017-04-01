@@ -11,13 +11,16 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace ExpenseTracker.WebClient.Controllers
 {
     public class ExpenseGroupsController : Controller
     {
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? page)
         {
+            page = (page ?? 1);
+
             var client = ExpenseTrackerHttpClient.GetClient();
 
             var model = new ExpenseGroupsViewModel();
@@ -36,13 +39,18 @@ namespace ExpenseTracker.WebClient.Controllers
                 return Content("An error occurred.");
             }
 
-            HttpResponseMessage response = await client.GetAsync("api/expensegroups");
+            HttpResponseMessage response = await client.GetAsync("api/expensegroups?sort=expensegroupstatusid,title&page=" + page + "&pageSize=5");
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                var lstExpenseGroups = JsonConvert.DeserializeObject<IEnumerable<ExpenseGroup>>(content);
 
-                model.ExpenseGroups = lstExpenseGroups;
+                var pagingInfo = HeaderParser.FindAndParsePagingInfo(response.Headers);
+
+                var lstExpenseGroups = JsonConvert.DeserializeObject<IEnumerable<ExpenseGroup>>(content);
+                var pagedExpenseGroupsList = new StaticPagedList<ExpenseGroup>(lstExpenseGroups, pagingInfo.CurrentPage, pagingInfo.PageSize, pagingInfo.TotalCount);
+
+                model.ExpenseGroups = pagedExpenseGroupsList;
+                model.PagingInfo = pagingInfo;
             }
             else
             {
@@ -53,9 +61,21 @@ namespace ExpenseTracker.WebClient.Controllers
         }
 
         // GET: ExpenseGroups/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return Content("Not implemented yet.");
+            HttpClient client = ExpenseTrackerHttpClient.GetClient();
+
+            HttpResponseMessage response = await client.GetAsync("api/expensegroups/" + id +
+                "?fields=id,title,description,expenses");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<ExpenseGroup>(content);
+
+                return View(model);
+            }
+
+            return Content("An error occurred.");
         }
 
         // GET: ExpenseGroups/Create
@@ -144,9 +164,26 @@ namespace ExpenseTracker.WebClient.Controllers
         }
 
         // POST: ExpenseGroups/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            try
+            {
+                HttpClient client = ExpenseTrackerHttpClient.GetClient();
+
+                HttpResponseMessage response = await client.DeleteAsync("api/expensegroups/" + id);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Content("An error occurred");
+                }
+            }
+            catch
+            {
+                return Content("An error occurred");
+            }
         }
     }
 }

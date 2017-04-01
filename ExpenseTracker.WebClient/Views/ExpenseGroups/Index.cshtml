@@ -1,4 +1,5 @@
 ﻿@model ExpenseTracker.WebClient.Models.ExpenseGroupsViewModel
+@using PagedList.Mvc
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -48,3 +49,5 @@
         </tr>
     }
 </table>
+Page @(Model.PagingInfo.CurrentPage > Model.PagingInfo.TotalPages ? Model.PagingInfo.TotalPages : Model.PagingInfo.CurrentPage) of @Model.PagingInfo.TotalPages
+@Html.PagedListPager(Model.ExpenseGroups, page => Url.Action("Index", new { page }))

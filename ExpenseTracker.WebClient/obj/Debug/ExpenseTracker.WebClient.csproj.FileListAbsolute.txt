@@ -44,3 +44,7 @@ C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\obj\
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\obj\Debug\ExpenseTracker.WebClient.csprojResolveAssemblyReference.cache
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\obj\Debug\ExpenseTracker.WebClient.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\obj\Debug\ExpenseTracker.WebClient.pdb
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.Mvc.dll
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.xml
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.Mvc.xml
