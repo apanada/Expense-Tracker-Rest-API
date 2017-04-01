@@ -48,3 +48,4 @@ C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.Mvc.dll
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.xml
 C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\PagedList.Mvc.xml
+C:\Users\apanada\OneDrive\Expense-Tracker-Rest-API\ExpenseTracker.WebClient\bin\Marvin.JsonPatch.dll

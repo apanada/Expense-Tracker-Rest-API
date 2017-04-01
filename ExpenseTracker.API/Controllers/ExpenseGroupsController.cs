@@ -144,7 +144,6 @@ namespace ExpenseTracker.API.Controllers
         }
 
         [HttpGet]
-        [Route("expensegroups/{id}")]
         public IHttpActionResult Get(int id, string fields = null)
         {
             try
@@ -183,9 +182,9 @@ namespace ExpenseTracker.API.Controllers
                 return InternalServerError();
             }
         }
-
-        [HttpPost]
+        
         [Route("expensegroups")]
+        [HttpPost]
         public IHttpActionResult Post([FromBody] DTO.ExpenseGroup expenseGroup)
         {
             try
